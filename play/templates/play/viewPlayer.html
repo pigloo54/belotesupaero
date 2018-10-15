@@ -1,0 +1,147 @@
+{% extends "base.html" %}
+
+{% block title %}
+	Player #{{ p.id }}
+{% endblock %}
+
+{% load static %}
+
+{% block main %}
+   <section id="one">
+		<div class="container">
+			<header class="major">
+				<h2>Player #{{ p.id }} </h2>
+				<p>{{p.name}} {{p.surname}}</p>
+			</header>
+			<div class="row uniform">
+				<div class="6u 12u(small)">
+					<h4>General stats</h4>
+					<div class="table-wrapper">
+						<table>
+							<tbody>
+								<tr>
+									<td style="width: -moz-min-content;padding: 0.25em 0.25em;vertical-align:middle">Overall ratio</td>
+									<td style="width: -moz-min-content;padding: 0.25em 0.25em;vertical-align:middle">44%</td>
+								</tr>
+								<tr>
+									<td style="width: -moz-min-content;padding: 0.25em 0.25em;vertical-align:middle">Game played</td>
+									<td style="width: -moz-min-content;padding: 0.25em 0.25em;vertical-align:middle">12</td>
+								</tr>
+								<tr>
+									<td style="width: -moz-min-content;padding: 0.25em 0.25em;vertical-align:middle">Taux de prise</td>
+									<td style="width: -moz-min-content;padding: 0.25em 0.25em;vertical-align:middle">10%</td>
+								</tr>
+								<tr>
+									<td style="width: -moz-min-content;padding: 0.25em 0.25em;vertical-align:middle">Taux de belote</td>
+									<td style="width: -moz-min-content;padding: 0.25em 0.25em;vertical-align:middle">10%</td>
+								</tr>
+								<tr>
+									<td style="width: -moz-min-content;padding: 0.25em 0.25em;vertical-align:middle">Taux de dedans</td>
+									<td style="width: -moz-min-content;padding: 0.25em 0.25em;vertical-align:middle">16%</td>
+								</tr>
+								<tr>
+									<td style="width: -moz-min-content;padding: 0.25em 0.25em;vertical-align:middle">Best mate</td>
+									<td style="width: -moz-min-content;padding: 0.25em 0.25em;vertical-align:middle">Jean Paul</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<div class="6u 12u(small)">
+					<h4>Last games</h4>
+					<div class="table-wrapper">
+						<table>
+							<tbody>
+								<tr>
+									<td style="width: -moz-min-content;padding: 0.25em 0.25em;vertical-align:middle">Overall ratio</td>
+									<td style="width: -moz-min-content;padding: 0.25em 0.25em;vertical-align:middle">44%</td>
+								</tr>
+								<tr>
+									<td style="width: -moz-min-content;padding: 0.25em 0.25em;vertical-align:middle">Game played</td>
+									<td style="width: -moz-min-content;padding: 0.25em 0.25em;vertical-align:middle">12</td>
+								</tr>
+								<tr>
+									<td style="width: -moz-min-content;padding: 0.25em 0.25em;vertical-align:middle">Taux de prise</td>
+									<td style="width: -moz-min-content;padding: 0.25em 0.25em;vertical-align:middle">10%</td>
+								</tr>
+								<tr>
+									<td style="width: -moz-min-content;padding: 0.25em 0.25em;vertical-align:middle">Taux de belote</td>
+									<td style="width: -moz-min-content;padding: 0.25em 0.25em;vertical-align:middle">10%</td>
+								</tr>
+								<tr>
+									<td style="width: -moz-min-content;padding: 0.25em 0.25em;vertical-align:middle">Taux de dedans</td>
+									<td style="width: -moz-min-content;padding: 0.25em 0.25em;vertical-align:middle">16%</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+			<h4>Details</h4>
+			<!-- <div class="table-wrapper">
+				<table style="text-align:center">
+					<tbody>
+						{% for trick in tricks %}
+							{% if trick.round_taken == 0%}
+								<tr>
+									<td style="width: -moz-min-content;padding: 0.25em 0.25em;vertical-align:middle"><i class="fas fa-ban"></i></td>
+									<td style="width: -moz-min-content;padding: 0.25em 0.25em;vertical-align:middle"><i class="fas fa-ban"></i><br><p style="font-size:smaller;line-height: normal; margin :0"><i class="fas fa-ban"></i> - <i class="fas fa-ban"></i></p></td>
+									<td style="width: -moz-min-content;padding: 0.25em 0.25em;vertical-align:middle"></td>
+								</tr>
+								<tr>
+									<td style="width: -moz-min-content;padding: 0.25em 0.25em;vertical-align:middle"><i class="fas fa-ban"></i></td>
+									<td style="width: -moz-min-content;padding: 0.25em 0.25em;vertical-align:middle">-</td>
+									<td style="width: -moz-min-content;padding: 0.25em 0.25em;vertical-align:middle"><i class="fas fa-ban"></i></td>
+								</tr>
+							{% else %}
+								<tr>
+									<td style="width: -moz-min-content;padding: 0.25em 0.25em;vertical-align:middle"><i class="
+									{% if trick.score_ns == 252 or trick.score_ns == 252 or trick.score_ew == 252 or trick.score_ew == 272%}
+										fab fa-angellist
+									{% elif trick.score_ns == 0 or trick.score_ew == 0 %}
+										fas fa-times
+									{% else %}
+										fas fa-check
+									{%endif %}
+									"></i></td>
+									<td style="width: -moz-min-content;padding: 0.25em 0.25em;vertical-align:middle">{{ trick.taker.name }}<br><p style="font-size:smaller;line-height: normal; margin :0">{{ trick.card }} {{trick.suit}} - {{trick.round_taken}} round</p></td>
+									<td style="width: -moz-min-content;padding: 0.25em 0.25em;vertical-align:middle"></td>
+								</tr>
+								<tr>
+									<td style="width: -moz-min-content;padding: 0.25em 0.25em;vertical-align:middle">{{ trick.score_ns }} {% if trick.belote_ns == 1 %} (B) {% endif %}</td>
+									<td style="width: -moz-min-content;padding: 0.25em 0.25em;vertical-align:middle">-</td>
+									<td style="width: -moz-min-content;padding: 0.25em 0.25em;vertical-align:middle">{{ trick.score_ew }} {% if trick.belote_ew == 1 %} (B) {% endif %}</td>
+								</tr>
+							{% endif %}
+						{% empty %}
+							<p>Aucun article.</p>
+						{% endfor %}
+					</tbody>
+				</table>
+			</div>
+			<h4>Players</h4>
+			<div class="table-wrapper">
+				<table style="text-align:center">
+					<tbody>
+						<tr>
+							<td style="width: -moz-min-content;padding: 0.25em 0.25em;vertical-align:middle"><i class="fas fa-user"></i></td>
+							<td style="width: -moz-min-content;padding: 0.25em 0.25em;vertical-align:middle"><i class="far fa-circle"></i></td>
+							<td style="width: -moz-min-content;padding: 0.25em 0.25em;vertical-align:middle"><i class="fas fa-check"></i></td>
+							<td style="width: -moz-min-content;padding: 0.25em 0.25em;vertical-align:middle"><i class="fas fa-times"></i></td>
+							<td style="width: -moz-min-content;padding: 0.25em 0.25em;vertical-align:middle"><i class="fab fa-angellist"></i></td>
+						</tr>
+						{% for key, p in players.items %}
+						<tr>
+							<td style="width: -moz-min-content;padding: 0.25em 0.25em;vertical-align:middle">{{p.player.name}}</td>
+							<td style="width: -moz-min-content;padding: 0.25em 0.25em;vertical-align:middle">{{p.score}}</td>
+							<td style="width: -moz-min-content;padding: 0.25em 0.25em;vertical-align:middle">{{p.done}}</td>
+							<td style="width: -moz-min-content;padding: 0.25em 0.25em;vertical-align:middle">{{p.failed}}</td>
+							<td style="width: -moz-min-content;padding: 0.25em 0.25em;vertical-align:middle">{{p.valat}}</td>
+						</tr>
+						{% endfor %}
+					</tbody>
+				</table>
+			</div> -->
+		</div>
+	</section>
+{% endblock %}

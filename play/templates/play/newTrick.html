@@ -1,0 +1,125 @@
+{% extends "base.html" %}
+
+{% block title %}
+	New Trick (Game #XXX)
+{% endblock %}
+
+{% load static %}
+
+{% block main %}
+   <section id="one">
+		<div class="container">
+			<header class="major">
+				<h2>New Trick </h2>
+				<p>Game {{g.id}}</p>
+			</header>
+			{{t.score_ns}}
+			{{t.score_ew}}
+			{{t.belote_ns}}
+			{{t.belote_ew}}
+			{{t.taker}}
+			{{t.round_taken}}
+			{{t.card}}
+			{{t.suit}}
+			{{t.game.id}}
+			<form method="post" action="{{ g.id }}">
+				{% csrf_token %}
+				{% if form.errors %}
+					{% for field in form %}
+						{% for error in field.errors %}
+							<div class="alert alert-danger">
+								<strong>{{ error|escape }}</strong>
+							</div>
+						{% endfor %}
+					{% endfor %}
+					{% for error in form.non_field_errors %}
+						<div class="alert alert-danger">
+							<strong>{{ error|escape }}</strong>
+						</div>
+					{% endfor %}
+				{% endif %}
+				<div class="row uniform">
+					<div class="6u">
+						<h4>Taken by</h4>
+						
+						<div class="select-wrapper">
+							{{ form.taker }}
+						</div>
+					</div>
+					<div class="6u">
+						<h4>On turn</h4>
+						<div class="select-wrapper">
+							{{ form.round_taken }}
+						</div>
+					</div>
+				</div>
+				<div class="row uniform">
+					<div class="6u">
+						<h4>With</h4>
+						<div class="select-wrapper">
+							{{ form.card }}
+						</div>
+					</div>
+					<div class="6u">
+						<h4>Suit</h4>
+						<div class="select-wrapper">
+							{{ form.suit }}
+						</div>
+					</div>
+				</div>
+				<div class="row uniform">
+					<div class="3u 12u(medium)">
+						<h3>Scores</h3>
+					</div>
+					<div class="3u 6u(medium)" style="text-align:center">
+						{{ form.failed }}
+						<label for="failed">Failed</label>
+					</div>
+					<div class="3u 6u(medium)" style="text-align:center">
+						{{ form.valat }}
+						<label for="valat">Capot</label>
+					</div>
+				</div>
+				<div class="row uniform">
+					<div class="6u" style="text-align:center">
+						<h4>Player 1 - Player 2</h4>
+						{{ form.score_ns }}
+					</div>
+					<div class="6u" style="text-align:center">
+						<h4>Player 3 - Player 4</h4>
+						{{ form.score_ew }}
+					</div>
+				</div>
+				<div class="row uniform" style="text-align:center">
+					<div class="6u">
+						{{ form.belote_ns }}
+						<label for="id_belote_ns">Belote</label>
+					</div>
+					<div class="6u" style="text-align:center">
+						{{ form.belote_ew }}
+						<label for="id_belote_ew">Belote</label>
+					</div>
+				</div>
+				<div class="row uniform">
+					<div class="6u">
+						<ul class="actions fit" style="text-align:center">
+							<li><a href="#" class="button">TOTAL 1</a></li>
+						</ul>
+					</div>
+					<div class="6u">
+						<ul class="actions fit" style="text-align:center">
+							<li><a href="#" class="button">TOTAL 2</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="row uniform">
+					<div class="12u">
+						<ul class="actions" style="text-align:center; width:100%">
+							<li style="width:100%"><input style="width:100%" type="submit" value="SUBMIT TRICK" /></li>
+						</ul>
+					</div>
+				</div>
+			</form>
+		</div>
+	</section>
+{% endblock %}
