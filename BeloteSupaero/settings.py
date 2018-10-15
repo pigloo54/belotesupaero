@@ -25,7 +25,9 @@ SECRET_KEY = 'x2woviijc%zqf)^)pe$v-cz(d81s6_lac$g5f)=ox69t3sj(jd'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['belotesupaero.herokuapp.com',
+
+]
 
 
 # Application definition
